@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ground Break</title>
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: linear-gradient(to right, gold, #ffd966);
+}
+
+/* NAV (UNCHANGED POSITIONING - SAME AS SERVICES) */
+nav {
+    background: grey;
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    padding: 15px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 16px 15px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background: black;
+    border-radius: 5px;
+}
+
+nav img {
+    width: 180px;
+    height: 130px;
+}
+
+/* USER */
+.user-box {
+    color: white;
+    font-weight: bold;
+    background: rgba(0,0,0,0.3);
+    padding: 8px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.user-box:hover {
+    background: rgba(0,0,0,0.5);
+}
+
+/* MAIN CONTENT (CLEANER LIKE SERVICES UI) */
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 40px;
+    padding: 40px;
+    flex-wrap: wrap;
+}
+
+.container img {
+    width: 600px;
+    max-width: 100%;
+    border-radius: 18px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.5);
+}
+
+/* TEXT BOX (MATCHED STYLE WITH SERVICES CARD FEEL) */
+.text-box {
+    max-width: 600px;
+    background: rgba(255,255,255,0.9);
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.35);
+    font-size: 22px;
+    line-height: 1.8;
+    color: #222;
+}
+
+/* PARAGRAPH SPACING */
+.text-box p {
+    margin-bottom: 18px;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px){
+    .container {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .text-box {
+        font-size: 18px;
+        padding: 25px;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <img src="GroundBreak.png" alt="Ground Break Logo">
+
+    <a href="Home.html">Home</a>
+    <a href="About.html">About</a>
+    <a href="Services.html">Services</a>
+    <a href="Contact.html">Contact</a>
+
+    <div class="user-box" id="userBox" onclick="handleUserClick()">Guest</div>
+</nav>
+
+<div class="container">
+    <img src="holiday.jpg" alt="Holiday Image">
+
+    <div class="text-box">
+        <p>“Hey there, welcome to <b>Ground Break</b> — your perfect escape from the everyday rush.”</p>
+
+        <p>“Step inside and feel the comfort of a place where good food, fun games, and great company come together.”</p>
+
+        <p>“Whether you're here to enjoy a relaxing meal, challenge friends at billiards, or simply unwind — this is your space to enjoy every moment.”</p>
+
+        <p>“Every visit brings a new experience, a new laugh, and a new memory worth keeping.”</p>
+
+        <p>“So go ahead — relax, enjoy, and make yourself at home at Ground Break.”</p>
+    </div>
+</div>
+
+<script>
+let currentUser = localStorage.getItem("currentUser");
+
+function updateUI(){
+    document.getElementById("userBox").innerText = currentUser
+        ? "👤 " + currentUser
+        : "👤 Guest";
+}
+
+function handleUserClick(){
+    if(currentUser){
+        let confirmLogout = confirm("Do you want to log out?");
+        if(confirmLogout){
+            localStorage.removeItem("currentUser");
+            alert("You have been logged out.");
+            window.location.href = "Login.html";
+        }
+    } else {
+        alert("You are not logged in.");
+        window.location.href = "Login.html";
+    }
+}
+
+updateUI();
+</script>
+
+</body>
+</html>

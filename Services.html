@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ground Break</title>
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: linear-gradient(to right, gold, #ffd966);
+}
+
+/* NAV (UNCHANGED POSITIONING) */
+nav {
+    background: grey;
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    padding: 15px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 16px 15px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background: black;
+    border-radius: 5px;
+}
+
+nav img {
+    width: 180px;
+    height: 130px;
+}
+
+/* USER */
+.user-box {
+    color: white;
+    font-weight: bold;
+    background: rgba(0,0,0,0.3);
+    padding: 8px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.user-box:hover {
+    background: rgba(0,0,0,0.5);
+}
+
+/* SERVICES */
+.services {
+    text-align: center;
+    padding: 40px;
+}
+
+.services h1 {
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.service-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.service-card {
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+}
+
+.service-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+}
+
+.service-card h2 {
+    margin: 15px 0 10px;
+}
+
+.service-card p {
+    font-size: 14px;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.5);
+}
+
+.modal-content h2 {
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.close-btn {
+    margin-top: 15px;
+    padding: 8px 15px;
+    border: none;
+    background: black;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px){
+    nav {
+        justify-content: center;
+        gap: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <img src="GroundBreak.png" alt="Ground Break Logo">
+
+    <a href="Home.html">Home</a>
+    <a href="About.html">About</a>
+    <a href="Services.html">Services</a>
+    <a href="Contact.html">Contact</a>
+
+    <div class="user-box" id="userBox" onclick="handleUserClick()">Guest</div>
+</nav>
+
+<section class="services">
+    <h1>Our Services</h1>
+
+    <div class="service-container">
+
+        <div class="service-card" onclick="showModal('games')">
+            <img src="games.jpg" alt="Games">
+            <h2>Games</h2>
+            <p>Enjoy fun and exciting games with friends.</p>
+        </div>
+
+        <div class="service-card" onclick="showModal('cafe')">
+            <img src="cafe.jpg" alt="Cafe">
+            <h2>Cafe</h2>
+            <p>Relax and enjoy coffee, snacks, and good vibes.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <h2 id="modalTitle"></h2>
+        <p id="modalText"></p>
+        <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<script>
+let currentUser = localStorage.getItem("currentUser");
+
+function updateUI(){
+    document.getElementById("userBox").innerText = currentUser
+        ? "👤 " + currentUser
+        : "👤 Guest";
+}
+
+function handleUserClick(){
+    if(currentUser){
+        let confirmLogout = confirm("Do you want to log out?");
+        if(confirmLogout){
+            localStorage.removeItem("currentUser");
+            alert("You have been logged out.");
+            window.location.href = "Login.html";
+        }
+    } else {
+        alert("You are not logged in.");
+        window.location.href = "Login.html";
+    }
+}
+
+function showModal(type){
+    let title = "";
+    let text = "";
+
+    if(type === "games"){
+        title = "Games Area";
+        text = "Step into our Games Zone where fun never stops! Enjoy billiards, competitive matches, and casual games with friends. It’s the perfect place to relax, compete, and create unforgettable memories.";
+    }
+
+    if(type === "cafe"){
+        title = "Cafe Experience";
+        text = "Our Cafe offers a cozy atmosphere where you can enjoy freshly brewed coffee, tasty snacks, and chill vibes. Whether you're alone or with friends, it's the perfect place to unwind.";
+    }
+
+    document.getElementById("modalTitle").innerText = title;
+    document.getElementById("modalText").innerText = text;
+    document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal(){
+    document.getElementById("modal").style.display = "none";
+}
+
+updateUI();
+</script>
+
+</body>
+</html>

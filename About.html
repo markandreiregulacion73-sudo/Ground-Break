@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ground Break - About</title>
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: linear-gradient(to right, gold, #ffd966);
+}
+
+/* NAV */
+nav {
+    background: grey;
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    padding: 15px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 16px 15px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background: black;
+    border-radius: 5px;
+}
+
+nav img {
+    width: 180px;
+    height: 130px;
+}
+
+/* USER BOX */
+.user-box {
+    color: white;
+    font-weight: bold;
+    background: rgba(0,0,0,0.3);
+    padding: 8px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.user-box:hover {
+    background: rgba(0,0,0,0.5);
+}
+
+/* TITLE */
+h1 {
+    text-align: center;
+    font-size: 55px;
+    margin: 30px 0;
+    color: #222;
+}
+
+/* MAIN CARD */
+.about-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* IMAGE */
+.about-container img {
+    width: 100%;
+    border-radius: 18px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.5);
+}
+
+/* TEXT */
+.about-text {
+    background: rgba(255,255,255,0.92);
+    margin-top: 20px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+    font-size: 18px;
+    line-height: 1.7;
+    color: #222;
+    text-align: justify;
+}
+
+/* LOCATION */
+.location {
+    margin-top: 20px;
+    background: rgba(0,0,0,0.75);
+    color: white;
+    padding: 18px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.location b {
+    color: gold;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px){
+    h1 {
+        font-size: 38px;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <img src="GroundBreak.png" alt="Ground Break Logo">
+
+    <a href="Home.html">Home</a>
+    <a href="About.html">About</a>
+    <a href="Services.html">Services</a>
+    <a href="Contact.html">Contact</a>
+
+    <div class="user-box" id="userBox" onclick="handleUserClick()">Guest</div>
+</nav>
+
+<h1>About Us</h1>
+
+<div class="about-container">
+
+    <img src="groundbr.jpg" alt="Ground Break">
+
+    <div class="about-text">
+        Welcome to <b>Ground Break Billiards Cafe</b> — a place where fun, relaxation, and great memories come together.
+
+        Founded on October 31, 2024 by Froilan Garcia and Shine Basillio, this space was created to bring people together in a warm and welcoming environment.
+
+        Enjoy billiards, karaoke, delicious food, and relaxing moments with friends and family all in one place.
+    </div>
+
+    <div class="location">
+        📍 <b>Location:</b><br>
+        7 M. Santos Street, San Jose, Antipolo, 1870 Rizal
+    </div>
+
+</div>
+
+<script>
+let currentUser = localStorage.getItem("currentUser");
+
+function updateUI(){
+    document.getElementById("userBox").innerText = currentUser
+        ? "👤 " + currentUser
+        : "👤 Guest";
+}
+
+function handleUserClick(){
+    if(currentUser){
+        let confirmLogout = confirm("Do you want to log out?");
+        if(confirmLogout){
+            localStorage.removeItem("currentUser");
+            alert("Logged out successfully!");
+            window.location.href = "Login.html";
+        }
+    } else {
+        alert("You are not logged in.");
+        window.location.href = "Login.html";
+    }
+}
+
+updateUI();
+</script>
+
+</body>
+</html>
