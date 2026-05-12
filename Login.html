@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ground Break</title>
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: linear-gradient(to right, gold, #ffd966);
+}
+
+nav {
+    background: grey;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    align-items: center;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
+}
+
+nav img {
+    width: 160px;
+    max-width: 40%;
+    height: auto;
+}
+
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh;
+    padding: 20px;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 360px;
+    background: #ffd84d;
+    padding: 25px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+    border: 2px solid rgba(0,0,0,0.2);
+}
+
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 2px solid #444;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    background: black;
+    color: gold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.login-box button:hover {
+    background: #222;
+}
+
+.login-box a {
+    display: block;
+    margin-top: 12px;
+    color: blue;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.msg {
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.toggle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    margin: 6px 0 10px 0;
+}
+
+.toggle input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    accent-color: black;
+}
+
+.toggle label {
+    line-height: 1;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    nav img {
+        width: 120px;
+    }
+
+    .login-box {
+        padding: 18px;
+    }
+
+    .login-box input {
+        font-size: 13px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<nav>
+    <img src="GroundBreak.png">
+</nav>
+
+<div class="login-wrapper">
+    <div class="login-box" id="loginBox">
+        <h3>Login</h3>
+
+        <input id="user" placeholder="Username">
+        <input id="pass" type="password" placeholder="Password">
+
+        <div class="toggle">
+            <input type="checkbox" onclick="toggleLoginPass()">
+            <label>Show Password</label>
+        </div>
+
+        <button onclick="login()">Login</button>
+
+        <a href="createaccount.html">Create Account</a>
+        <a onclick="showForgot()">Forgot Password?</a>
+
+        <div class="msg" id="msg"></div>
+    </div>
+</div>
+
+<script>
+let users = JSON.parse(localStorage.getItem("users") || "[]");
+
+function login(){
+    let u = document.getElementById("user").value.trim();
+    let p = document.getElementById("pass").value.trim();
+    let msg = document.getElementById("msg");
+
+    if(!u || !p){
+        alert("Please enter both username and password.");
+        msg.innerText = "Please fill in all fields";
+        return;
+    }
+
+    let found = users.find(x => x.user === u && x.pass === p);
+
+    if(!found){
+        alert("Incorrect username or password.");
+        msg.innerText = "Incorrect username or password";
+        return;
+    }
+
+    localStorage.setItem("currentUser", u);
+
+    msg.innerText = "Redirecting...";
+
+    setTimeout(() => {
+        window.location.href = "Home.html";
+    }, 800);
+}
+
+function toggleLoginPass(){
+    let p = document.getElementById("pass");
+    p.type = p.type === "password" ? "text" : "password";
+}
+
+function showForgot(){
+    document.getElementById("loginBox").innerHTML = `
+        <h3>Reset Password</h3>
+
+        <input id="fuser" placeholder="Enter Username">
+        <input id="newpass" type="password" placeholder="New Password">
+
+        <div class="toggle">
+            <input type="checkbox" onclick="toggleForgotPass()">
+            <label>Show Password</label>
+        </div>
+
+        <button onclick="resetPassword()">Reset Password</button>
+
+        <a onclick="location.reload()">Back to Login</a>
+
+        <div class="msg" id="msg"></div>
+    `;
+}
+
+function toggleForgotPass(){
+    let p = document.getElementById("newpass");
+    p.type = p.type === "password" ? "text" : "password";
+}
+
+function resetPassword(){
+    let u = document.getElementById("fuser").value.trim();
+    let newPass = document.getElementById("newpass").value.trim();
+    let msg = document.getElementById("msg");
+
+    if(!u || !newPass){
+        alert("Please fill in all fields.");
+        msg.innerText = "Please fill in all fields";
+        return;
+    }
+
+    let found = users.find(x => x.user === u);
+
+    if(!found){
+        alert("User not found.");
+        msg.innerText = "User not found";
+        return;
+    }
+
+    found.pass = newPass;
+    localStorage.setItem("users", JSON.stringify(users));
+
+    msg.innerText = "Password updated!";
+
+    setTimeout(() => {
+        location.reload();
+    }, 1000);
+}
+</script>
+
+</body>
+</html>

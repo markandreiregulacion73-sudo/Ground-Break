@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ground Break - About</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:linear-gradient(to right, gold, #ffd966);
+}
+
+/* NAVIGATION */
+nav{
+    width:100%;
+    background:grey;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 5%;
+    flex-wrap:wrap;
+    gap:20px;
+    box-shadow:0px 4px 10px rgba(0,0,0,0.4);
+}
+
+.logo{
+    width:160px;
+    max-width:100%;
+    height:auto;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-left:auto;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    padding:10px 14px;
+    border-radius:6px;
+}
+
+.nav-links a:hover{
+    background:black;
+}
+
+.user-box{
+    color:white;
+    font-weight:bold;
+    background:rgba(0,0,0,0.3);
+    padding:10px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+/* TITLE */
+h1{
+    text-align:center;
+    font-size:60px;
+    margin:40px 0 25px;
+    color:#222;
+}
+
+/* ABOUT */
+.about-container{
+    width:100%;
+    max-width:1000px;
+    margin:auto;
+    padding:0 5% 50px;
+}
+
+.about-container img{
+    width:100%;
+    border-radius:24px;
+    box-shadow:0px 12px 30px rgba(0,0,0,0.4);
+}
+
+.about-text{
+    background:rgba(255,255,255,0.97);
+    margin-top:25px;
+    padding:40px;
+    border-radius:24px;
+    box-shadow:0px 12px 35px rgba(0,0,0,0.25);
+}
+
+.about-text p{
+    font-size:18px;
+    line-height:2;
+    text-align:justify;
+    margin-bottom:18px;
+    color:#333;
+}
+
+.location{
+    margin-top:25px;
+    background:rgba(0,0,0,0.85);
+    color:white;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    font-size:20px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    nav{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .nav-links{
+        margin-left:0;
+        justify-content:center;
+    }
+
+    .logo{
+        width:140px;
+    }
+
+    h1{
+        font-size:38px;
+    }
+
+    .about-text{
+        padding:25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <img src="GroundBreak.png" class="logo">
+
+    <div class="nav-links">
+        <a href="Home.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="Services.html">Services</a>
+        <a href="Contact.html">Contact</a>
+
+        <div class="user-box" id="userBox" onclick="handleUserClick()">👤 Guest</div>
+    </div>
+</nav>
+
+<h1>About Us</h1>
+
+<div class="about-container">
+
+    <img src="groundbr.jpg">
+
+    <div class="about-text">
+
+        <p>Welcome to <b>Ground Break Billiards Cafe</b> — a place where fun, relaxation, and unforgettable memories come together.</p>
+
+        <p>Founded on October 31, 2024 by Froilan Garcia and Shine Basillio, Ground Break was created to bring people together in a warm, welcoming, and family-friendly environment.</p>
+
+        <p>More than just a billiard cafe, it is a space where customers can relax, socialize, and enjoy quality time with friends and loved ones.</p>
+
+        <p>We value customer satisfaction by providing quality service, a clean and comfortable atmosphere, and an enjoyable place for entertainment and bonding.</p>
+
+        <p>Whether customers visit to unwind after school or work, enjoy good food, sing karaoke, or simply spend time with others, Ground Break aims to make every visit meaningful and enjoyable.</p>
+
+        <p>Through the continuous support of our community and loyal customers, we remain committed to improving our services and becoming a trusted destination for recreation and family-friendly entertainment.</p>
+
+    </div>
+
+    <div class="location">
+        📍 <b>Location:</b><br>
+        7 M. Santos Street, San Jose, Antipolo, 1870 Rizal
+    </div>
+
+</div>
+
+<script>
+let currentUser = localStorage.getItem("currentUser");
+
+function updateUI(){
+    document.getElementById("userBox").innerText =
+        currentUser ? "👤 " + currentUser : "👤 Guest";
+}
+
+function handleUserClick(){
+    if(currentUser){
+        if(confirm("Do you want to log out?")){
+            localStorage.removeItem("currentUser");
+            location.reload();
+        }
+    } else {
+        window.location.href = "Login.html";
+    }
+}
+
+updateUI();
+</script>
+
+</body>
+</html>

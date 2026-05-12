@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ground Break</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:linear-gradient(to right, gold, #ffd966);
+}
+
+nav{
+    width:100%;
+    background:grey;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 5%;
+    flex-wrap:wrap;
+    gap:20px;
+    box-shadow:0px 4px 10px rgba(0,0,0,0.4);
+}
+
+.logo{
+    width:160px;
+    max-width:100%;
+    height:auto;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-left:auto;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    padding:10px 14px;
+    border-radius:6px;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    background:black;
+}
+
+.user-box{
+    color:white;
+    font-weight:bold;
+    background:rgba(0,0,0,0.3);
+    padding:10px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:0.3s;
+}
+
+.user-box:hover{
+    background:rgba(0,0,0,0.5);
+}
+
+.container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:40px;
+    padding:50px 5%;
+    flex-wrap:wrap;
+}
+
+.container img{
+    width:100%;
+    max-width:600px;
+    border-radius:24px;
+    box-shadow:0px 12px 30px rgba(0,0,0,0.4);
+}
+
+.text-box{
+    flex:1;
+    min-width:300px;
+    max-width:650px;
+    background:rgba(255,255,255,0.96);
+    padding:45px;
+    border-radius:24px;
+    box-shadow:0px 12px 35px rgba(0,0,0,0.25);
+    color:#222;
+    backdrop-filter:blur(8px);
+    border:2px solid rgba(255,255,255,0.4);
+}
+
+.text-box p{
+    font-size:22px;
+    line-height:2;
+    margin-bottom:22px;
+    letter-spacing:0.5px;
+    text-align:justify;
+    color:#333;
+}
+
+.text-box p:first-child{
+    font-size:28px;
+    font-weight:bold;
+    color:#111;
+    line-height:1.6;
+}
+
+.text-box b{
+    color:#c58b00;
+}
+
+@media(max-width:992px){
+
+    .container{
+        gap:30px;
+    }
+
+    .text-box p{
+        font-size:20px;
+    }
+}
+
+@media(max-width:768px){
+
+    nav{
+        flex-direction:column;
+        justify-content:center;
+        text-align:center;
+    }
+
+    .nav-links{
+        width:100%;
+        justify-content:center;
+        margin-left:0;
+    }
+
+    .logo{
+        width:140px;
+    }
+
+    .container{
+        flex-direction:column;
+        padding:25px 20px;
+    }
+
+    .text-box{
+        width:100%;
+        padding:30px;
+        border-radius:18px;
+    }
+
+    .text-box p{
+        font-size:18px;
+        line-height:1.8;
+    }
+
+    .text-box p:first-child{
+        font-size:24px;
+    }
+
+    .nav-links a{
+        font-size:16px;
+        padding:8px 12px;
+    }
+}
+
+@media(max-width:480px){
+
+    .logo{
+        width:120px;
+    }
+
+    .nav-links{
+        gap:8px;
+    }
+
+    .nav-links a{
+        font-size:15px;
+        padding:7px 10px;
+    }
+
+    .user-box{
+        font-size:14px;
+        padding:8px 10px;
+    }
+
+    .text-box{
+        padding:22px;
+    }
+
+    .text-box p{
+        font-size:16px;
+    }
+
+    .text-box p:first-child{
+        font-size:20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <img src="GroundBreak.png" alt="Ground Break Logo" class="logo">
+
+    <div class="nav-links">
+        <a href="Home.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="Services.html">Services</a>
+        <a href="Contact.html">Contact</a>
+
+        <div class="user-box" id="userBox" onclick="handleUserClick()">
+            👤 Guest
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <img src="holiday.jpg" alt="Holiday Image">
+
+    <div class="text-box">
+        <p>“Hey there, welcome to <b>Ground Break</b> — your perfect escape from the everyday rush.”</p>
+
+        <p>“Step inside and feel the comfort of a place where good food, fun games, and great company come together.”</p>
+
+        <p>“Whether you're here to enjoy a relaxing meal, challenge friends at billiards, or simply unwind — this is your space to enjoy every moment.”</p>
+
+        <p>“Every visit brings a new experience, a new laugh, and a new memory worth keeping.”</p>
+
+        <p>“So go ahead — relax, enjoy, and make yourself at home at Ground Break.”</p>
+    </div>
+</div>
+
+<script>
+let currentUser = localStorage.getItem("currentUser");
+
+function updateUI(){
+    document.getElementById("userBox").innerText = currentUser
+        ? "👤 " + currentUser
+        : "👤 Guest";
+}
+
+function handleUserClick(){
+    if(currentUser){
+        let confirmLogout = confirm("Do you want to log out?");
+        if(confirmLogout){
+            localStorage.removeItem("currentUser");
+            alert("You have been logged out.");
+            window.location.href = "Login.html";
+        }
+    } else {
+        alert("You are not logged in.");
+        window.location.href = "Login.html";
+    }
+}
+
+updateUI();
+</script>
+
+</body>
+</html>

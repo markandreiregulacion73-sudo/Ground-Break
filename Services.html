@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ground Break</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:linear-gradient(to right, gold, #ffd966);
+}
+
+nav{
+    width:100%;
+    background:grey;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 5%;
+    flex-wrap:wrap;
+    gap:20px;
+    box-shadow:0px 4px 10px rgba(0,0,0,0.4);
+}
+
+.logo{
+    width:160px;
+    max-width:100%;
+    height:auto;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-left:auto;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    padding:10px 14px;
+    border-radius:6px;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    background:black;
+}
+
+.user-box{
+    color:white;
+    font-weight:bold;
+    background:rgba(0,0,0,0.3);
+    padding:10px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:0.3s;
+}
+
+.user-box:hover{
+    background:rgba(0,0,0,0.5);
+}
+
+.services{
+    text-align:center;
+    padding:60px 5%;
+}
+
+.services h1{
+    font-size:55px;
+    margin-bottom:40px;
+    color:#222;
+    text-shadow:2px 2px 6px rgba(0,0,0,0.2);
+}
+
+.service-container{
+    display:flex;
+    justify-content:center;
+    align-items:stretch;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+.service-card{
+    background:rgba(255,255,255,0.25);
+    backdrop-filter:blur(10px);
+    border-radius:24px;
+    padding:25px;
+    width:320px;
+    box-shadow:0px 12px 30px rgba(0,0,0,0.25);
+    transition:0.35s;
+    cursor:pointer;
+    border:2px solid rgba(255,255,255,0.3);
+}
+
+.service-card:hover{
+    transform:translateY(-10px) scale(1.03);
+    box-shadow:0px 18px 40px rgba(0,0,0,0.35);
+}
+
+.service-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:18px;
+}
+
+.service-card h2{
+    margin-top:20px;
+    font-size:30px;
+    color:#222;
+}
+
+.service-card p{
+    margin-top:12px;
+    font-size:18px;
+    line-height:1.7;
+    color:#333;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    z-index:1000;
+}
+
+.modal-content{
+    background:white;
+    padding:35px;
+    border-radius:24px;
+    max-width:550px;
+    width:100%;
+    text-align:center;
+    box-shadow:0px 15px 40px rgba(0,0,0,0.5);
+    animation:popup 0.3s ease;
+}
+
+@keyframes popup{
+    from{
+        transform:scale(0.8);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.modal-content h2{
+    margin-bottom:15px;
+    font-size:32px;
+    color:#222;
+}
+
+.modal-content p{
+    font-size:18px;
+    line-height:1.8;
+    color:#444;
+}
+
+.close-btn{
+    margin-top:20px;
+    padding:12px 22px;
+    border:none;
+    background:black;
+    color:white;
+    cursor:pointer;
+    border-radius:10px;
+    font-size:16px;
+    transition:0.3s;
+}
+
+.close-btn:hover{
+    background:#333;
+}
+
+@media(max-width:992px){
+
+    .services h1{
+        font-size:45px;
+    }
+
+    .service-card{
+        width:280px;
+    }
+}
+
+@media(max-width:768px){
+
+    nav{
+        flex-direction:column;
+        justify-content:center;
+        text-align:center;
+    }
+
+    .nav-links{
+        width:100%;
+        justify-content:center;
+        margin-left:0;
+    }
+
+    .logo{
+        width:140px;
+    }
+
+    .services{
+        padding:40px 20px;
+    }
+
+    .services h1{
+        font-size:38px;
+    }
+
+    .service-card{
+        width:100%;
+        max-width:420px;
+    }
+
+    .service-card h2{
+        font-size:26px;
+    }
+
+    .service-card p{
+        font-size:16px;
+    }
+
+    .modal-content{
+        padding:25px;
+    }
+
+    .modal-content h2{
+        font-size:26px;
+    }
+
+    .modal-content p{
+        font-size:16px;
+    }
+
+    .nav-links a{
+        font-size:16px;
+        padding:8px 12px;
+    }
+}
+
+@media(max-width:480px){
+
+    .logo{
+        width:120px;
+    }
+
+    .nav-links{
+        gap:8px;
+    }
+
+    .nav-links a{
+        font-size:15px;
+        padding:7px 10px;
+    }
+
+    .user-box{
+        font-size:14px;
+        padding:8px 10px;
+    }
+
+    .services h1{
+        font-size:30px;
+    }
+
+    .service-card{
+        padding:20px;
+    }
+
+    .service-card img{
+        height:180px;
+    }
+
+    .service-card h2{
+        font-size:22px;
+    }
+
+    .modal-content{
+        padding:20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <img src="GroundBreak.png" alt="Ground Break Logo" class="logo">
+
+    <div class="nav-links">
+        <a href="Home.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="Services.html">Services</a>
+        <a href="Contact.html">Contact</a>
+
+        <div class="user-box" id="userBox" onclick="handleUserClick()">
+            👤 Guest
+        </div>
+    </div>
+</nav>
+
+<section class="services">
+    <h1>Our Services</h1>
+
+    <div class="service-container">
+
+        <div class="service-card" onclick="showModal('games')">
+            <img src="games.jpg" alt="Games">
+            <h2>Games</h2>
+            <p>Enjoy fun and exciting games with friends.</p>
+        </div>
+
+        <div class="service-card" onclick="showModal('cafe')">
+            <img src="cafe.jpg" alt="Cafe">
+            <h2>Cafe</h2>
+            <p>Relax and enjoy coffee, snacks, and good vibes.</p>
+        </div>
+
+        <div class="service-card" onclick="showModal('pool')">
+            <img src="pool.jpg" alt="Pool Table">
+            <h2>Pool Tables</h2>
+            <p>Play billiards on the pool table.</p>
+        </div>
+
+        <div class="service-card" onclick="showModal('tournament')">
+            <img src="tournament.jpg" alt="Tournaments">
+            <h2>Tournaments</h2>
+            <p>Play competitive</p>
+        </div>
+
+        <div class="service-card" onclick="showModal('promo')">
+            <img src="promos.jpg" alt="promo">
+            <h2>Promos</h2>
+            <p>Occasional to Month-long Promos</p>
+        </div>
+
+        <div class="service-card" onclick="showModal('rental')">
+            <img src="rental.jpg" alt="rental">
+            <h2>Rentals</h2>
+            <p>Pool cues and Chalk</p>
+        </div>
+    </div>
+</section>
+
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <h2 id="modalTitle"></h2>
+        <p id="modalText"></p>
+        <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<script>
+let currentUser = localStorage.getItem("currentUser");
+
+function updateUI(){
+    document.getElementById("userBox").innerText = currentUser
+        ? "👤 " + currentUser
+        : "👤 Guest";
+}
+
+function handleUserClick(){
+    if(currentUser){
+        let confirmLogout = confirm("Do you want to log out?");
+        if(confirmLogout){
+            localStorage.removeItem("currentUser");
+            alert("You have been logged out.");
+            window.location.href = "Login.html";
+        }
+    } else {
+        alert("You are not logged in.");
+        window.location.href = "Login.html";
+    }
+}
+
+function showModal(type){
+    let title = "";
+    let text = "";
+
+    if(type === "games"){
+        title = "Games Area";
+        text = "Step into our Games Area where fun never stops! Enjoy our free board games. It’s the perfect place to relax and create unforgettable memories.";
+    }
+
+    if(type === "cafe"){
+        title = "Cafe Experience";
+        text = "Our Cafe offers a cozy atmosphere where you can enjoy freshly brewed coffee, tasty snacks, and chill vibes. Whether you're alone or with friends, it's the perfect place to unwind.";
+    }
+
+    if(type === "pool"){
+        title = "The Pool Tables";
+        text = "Ground Break offers a variety of pool tables, play competitive or casual games with friends.";
+    }
+
+    if(type === "tournament"){
+        title = "Tournaments";
+        text = "Play competitively, set the stakes, and play your heart out.";
+    }
+
+    if(type === "promo"){
+        title = "Promos";
+        text = "Promos that will have your toes on edge as you enjoy your games, whether it's a discount or more time to play Ground Break got you.";
+    }
+
+    if(type === "rental"){
+        title = "Rental";
+        text = "You can use our pool cues and chalk for free as long as you take responsibility for it.";
+    }
+    document.getElementById("modalTitle").innerText = title;
+    document.getElementById("modalText").innerText = text;
+    document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal(){
+    document.getElementById("modal").style.display = "none";
+}
+
+updateUI();
+</script>
+
+</body>
+</html>

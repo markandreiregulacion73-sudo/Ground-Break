@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forgot Password</title>
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: linear-gradient(to right, gold, #ffd966);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.box {
+    background: #ffd84d;
+    padding: 25px;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 2px solid #444;
+    border-radius: 6px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: black;
+    color: gold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.msg {
+    margin-top: 10px;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="box">
+        <h3>Reset Password</h3>
+
+        <input id="user" placeholder="Enter Username">
+        <input id="newPass" type="password" placeholder="New Password">
+
+        <button onclick="resetPassword()">Reset Password</button>
+
+        <div class="msg" id="msg"></div>
+
+        <br>
+        <a href="Login.html">Back to Login</a>
+    </div>
+</div>
+
+<script>
+let users = JSON.parse(localStorage.getItem("users") || "[]");
+
+function resetPassword(){
+    let u = document.getElementById("user").value.trim();
+    let newPass = document.getElementById("newPass").value.trim();
+
+    if(!u || !newPass){
+        msg.innerText = "Please fill in all fields";
+        return;
+    }
+
+    let found = users.find(x => x.user === u);
+
+    if(!found){
+        msg.innerText = "User not found";
+        return;
+    }
+
+    found.pass = newPass;
+
+    localStorage.setItem("users", JSON.stringify(users));
+
+    msg.innerText = "Password updated successfully!";
+
+    setTimeout(() => {
+        window.location.href = "Login.html";
+    }, 1000);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account</title>
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: linear-gradient(to right, gold, #ffd966);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.box {
+    width: 100%;
+    max-width: 360px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+    box-sizing: border-box;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: black;
+    color: gold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #222;
+}
+
+a {
+    display: block;
+    margin-top: 12px;
+    text-decoration: none;
+    color: blue;
+    font-size: 14px;
+}
+
+.msg {
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.show-pass {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.show-pass input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .box {
+        padding: 18px;
+    }
+
+    input, select {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    button {
+        padding: 10px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+    <h3>Create Account</h3>
+
+    <input id="newUser" placeholder="Username">
+    <input id="newPass" type="password" placeholder="Password">
+    <input id="confirmPass" type="password" placeholder="Confirm Password">
+
+    <div class="show-pass">
+        <input type="checkbox" onclick="togglePassword()">
+        <label>Show Password</label>
+    </div>
+
+    <input id="birthdate" type="date">
+    <input id="age" placeholder="Age" readonly>
+
+    <select id="gender">
+        <option value="">Select Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+    </select>
+
+    <button onclick="create()">Create Account</button>
+
+    <a href="Login.html">Back to Login</a>
+
+    <div class="msg" id="msg"></div>
+</div>
+
+<script>
+let users = JSON.parse(localStorage.getItem("users") || "[]");
+
+document.getElementById("birthdate").addEventListener("change", function(){
+    let birth = new Date(this.value);
+    let today = new Date();
+
+    let age = today.getFullYear() - birth.getFullYear();
+    let m = today.getMonth() - birth.getMonth();
+
+    if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
+        age--;
+    }
+
+    document.getElementById("age").value = age;
+});
+
+function create(){
+    let u = newUser.value.trim();
+    let p = newPass.value.trim();
+    let cp = confirmPass.value.trim();
+    let b = birthdate.value;
+    let a = parseInt(age.value);
+    let g = gender.value;
+
+    if(u === "" || p === "" || cp === "" || b === "" || !g){
+        msg.innerText = "Please fill all fields";
+        return;
+    }
+
+    if(p !== cp){
+        msg.innerText = "Passwords do not match";
+        return;
+    }
+
+    if(a < 12){
+        msg.innerText = "You must be at least 12 years old";
+        return;
+    }
+
+    if(users.find(x => x.user === u)){
+        msg.innerText = "User already exists";
+        return;
+    }
+
+    users.push({
+        user: u,
+        pass: p,
+        birthdate: b,
+        age: a,
+        gender: g
+    });
+
+    localStorage.setItem("users", JSON.stringify(users));
+
+    msg.innerText = "Account created successfully";
+}
+
+function togglePassword(){
+    let p = document.getElementById("newPass");
+    let cp = document.getElementById("confirmPass");
+
+    let type = p.type === "password" ? "text" : "password";
+
+    p.type = type;
+    cp.type = type;
+}
+</script>
+
+</body>
+</html>
