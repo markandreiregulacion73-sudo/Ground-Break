@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ground Break - About</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins', sans-serif;
+    background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url('holiday.jpg');
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+    width:100%;
+    background:rgba(30,30,30,0.92);
+    backdrop-filter:blur(10px);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:15px 6%;
+    flex-wrap:wrap;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    width:170px;
+    max-width:100%;
+    transition:0.3s;
+}
+
+.logo:hover{
+    transform:scale(1.08);
+    filter:drop-shadow(0px 6px 15px rgba(255,215,0,0.5));
+}
+
+.nav-links{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    font-size:17px;
+    font-weight:700;
+    padding:10px 16px;
+    border-radius:30px;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    background:gold;
+    color:black;
+    transform:translateY(-3px);
+}
+
+/* TITLE */
+
+h1{
+    text-align:center;
+    font-size:clamp(28px, 5vw, 60px);
+    margin:50px 0 25px;
+    font-weight:800;
+}
+
+/* CONTAINER */
+
+.about-container{
+    width:100%;
+    max-width:1100px;
+    margin:auto;
+    padding:0 5% 60px;
+}
+
+/* IMAGE */
+
+.about-container img{
+    width:100%;
+    border-radius:25px;
+    box-shadow:0px 15px 40px rgba(0,0,0,0.5);
+    transition:0.3s;
+}
+
+.about-container img:hover{
+    transform:scale(1.02);
+}
+
+/* TEXT BOX */
+
+.about-text{
+    background:rgba(255,255,255,0.96);
+    margin-top:25px;
+    padding:clamp(20px, 4vw, 50px);
+    border-radius:25px;
+    color:#222;
+    box-shadow:0px 12px 35px rgba(0,0,0,0.3);
+    transition:0.3s;
+}
+
+.about-text:hover{
+    transform:translateY(-5px);
+}
+
+.about-text p{
+    font-size:clamp(15px, 2.2vw, 20px);
+    line-height:1.9;
+    margin-bottom:18px;
+    font-weight:600;
+}
+
+.about-text b{
+    color:#c58b00;
+}
+
+/* LOCATION */
+
+.location{
+    margin-top:25px;
+    background:rgba(0,0,0,0.85);
+    color:white;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    font-size:clamp(14px, 2vw, 20px);
+    font-weight:700;
+    line-height:1.7;
+    transition:0.3s;
+}
+
+.location:hover{
+    transform:translateY(-5px);
+}
+
+/* RESPONSIVE NAV */
+
+@media(max-width:768px){
+
+    nav{
+        flex-direction:column;
+        text-align:center;
+        gap:12px;
+    }
+
+    .logo{
+        width:140px;
+    }
+
+    .nav-links{
+        justify-content:center;
+    }
+
+    .nav-links a{
+        font-size:15px;
+        padding:8px 12px;
+    }
+}
+
+@media(max-width:480px){
+
+    .logo{
+        width:120px;
+    }
+
+    .nav-links{
+        gap:8px;
+    }
+
+    .nav-links a{
+        font-size:13px;
+        padding:7px 10px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+    <img src="GroundBreak.png" class="logo">
+
+    <div class="nav-links">
+        <a href="Home.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="Services.html">Services</a>
+        <a href="Contact.html">Contact</a>
+    </div>
+
+</nav>
+
+<h1>About Us</h1>
+
+<div class="about-container">
+
+    <img src="groundbr.jpg">
+
+    <div class="about-text">
+
+        <p><b>Ground Break Billiards Cafe</b> is a place where fun, relaxation, and memories come together.</p>
+
+        <p>Founded on <b>October 31, 2024</b>, it was built to bring people together in a warm and friendly environment.</p>
+
+        <p>We provide food, games, and a comfortable space for everyone.</p>
+
+        <p>Our goal is to give every customer a memorable experience.</p>
+
+    </div>
+
+    <div class="location">
+        📍 <b>Location:</b><br>
+        7 M. Santos Street, San Jose, Antipolo, Rizal 1870
+    </div>
+
+</div>
+
+</body>
+</html>
