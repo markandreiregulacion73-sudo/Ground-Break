@@ -36,7 +36,7 @@ body{
     overflow-x:hidden;
 }
 
-/* ================= NAVBAR (FIXED SIZE MATCH ALL PAGES) ================= */
+/* ================= NAVBAR ================= */
 
 nav{
     width:100%;
@@ -55,30 +55,35 @@ nav{
     position:sticky;
     top:0;
     z-index:1000;
+
+    flex-wrap:wrap;
+    gap:10px;
 }
 
 .logo{
-    width:160px;
-    max-width:100%;
+    width:clamp(110px, 15vw, 160px);
+    height:auto;
 }
 
 .nav-links{
     display:flex;
     flex-wrap:wrap;
-    gap:10px;
+    justify-content:center;
+    gap:8px;
 }
 
 .nav-links a{
     text-decoration:none;
     color:white;
 
-    font-size:16px;
+    font-size:clamp(12px, 2.5vw, 16px);
     font-weight:700;
 
-    padding:10px 14px;
+    padding:8px 12px;
     border-radius:30px;
 
     transition:0.3s;
+    white-space:nowrap;
 }
 
 .nav-links a:hover{
@@ -86,7 +91,7 @@ nav{
     color:black;
 }
 
-/* ================= HERO (UNCHANGED VISUAL, ONLY SCALE FIX) ================= */
+/* ================= HERO ================= */
 
 .banner{
     width:100%;
@@ -102,22 +107,23 @@ nav{
 }
 
 .banner-content{
+    width:100%;
     max-width:900px;
-    margin:auto;
 }
 
 .banner-logo{
-    width:clamp(160px, 45vw, 400px);
+    width:clamp(160px, 45vw, 380px);
+    height:auto;
     margin-bottom:20px;
 }
 
 .banner-content p{
-    font-size:clamp(14px, 3.5vw, 24px);
+    font-size:clamp(14px, 3.5vw, 22px);
     font-weight:600;
     margin-bottom:20px;
 }
 
-/* BUTTON (UNCHANGED) */
+/* BUTTON */
 .start-btn{
     display:inline-block;
 
@@ -126,7 +132,7 @@ nav{
     background:gold;
     color:black;
 
-    font-size:clamp(14px, 3vw, 20px);
+    font-size:clamp(14px, 3vw, 18px);
     font-weight:800;
 
     border-radius:50px;
@@ -141,17 +147,14 @@ nav{
     transform:scale(1.05);
 }
 
-/* ================= TEXT BOX (MATCH ABOUT SIZE SYSTEM) ================= */
+/* ================= TEXT BOX ================= */
 
 .container{
     width:100%;
-    max-width:1100px;
-    margin:auto;
-
-    padding:40px 5% 60px;
-
     display:flex;
     justify-content:center;
+
+    padding:40px 5% 60px;
 }
 
 .text-box{
@@ -160,21 +163,22 @@ nav{
 
     background:rgba(255,255,255,0.95);
 
-    padding:35px;
+    padding:clamp(18px, 4vw, 35px);
 
     border-radius:20px;
 
     color:#222;
-}
 
-.text-box p{
-    font-size:18px;
-    font-weight:600;
-    line-height:1.7;
     text-align:center;
 }
 
-/* ================= MOBILE CONSISTENCY ================= */
+.text-box p{
+    font-size:clamp(14px, 3.5vw, 20px);
+    font-weight:600;
+    line-height:1.7;
+}
+
+/* ================= MOBILE FIXES ================= */
 
 @media(max-width:768px){
 
@@ -183,12 +187,8 @@ nav{
         text-align:center;
     }
 
-    .logo{
-        width:140px;
-    }
-
-    .text-box{
-        padding:25px;
+    .banner{
+        min-height:70vh;
     }
 }
 
@@ -203,12 +203,16 @@ nav{
     }
 
     .nav-links a{
-        font-size:13px;
-        padding:8px 10px;
+        font-size:12px;
+        padding:7px 10px;
     }
 
-    .text-box{
-        padding:20px;
+    .banner{
+        padding:30px 5%;
+    }
+
+    .start-btn{
+        padding:10px 20px;
     }
 }
 
