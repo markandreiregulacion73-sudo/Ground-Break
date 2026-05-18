@@ -35,61 +35,69 @@ body{
 
     color:white;
     overflow-x:hidden;
+    min-height:100vh;
 }
 
-/* ================= NAVBAR FIX ================= */
+/* ================= NAVBAR (FIXED) ================= */
 
 nav{
     width:100%;
-    background:rgba(20,20,20,0.85);
-    backdrop-filter:blur(12px);
+    background:rgba(30,30,30,0.92);
+    backdrop-filter:blur(10px);
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    padding:15px 5%;
+    padding:15px 6%;
 
     position:sticky;
     top:0;
     z-index:1000;
 
-    flex-wrap:wrap;
-    gap:10px;
+    gap:15px;
 }
 
 .logo{
-    width:clamp(110px, 15vw, 170px);
+    width:170px;
+    max-width:100%;
     height:auto;
+    transition:0.3s;
+}
+
+.logo:hover{
+    transform:scale(1.05);
+    filter:drop-shadow(0px 6px 15px rgba(255,215,0,0.5));
 }
 
 .nav-links{
     display:flex;
-    flex-wrap:wrap;
+    align-items:center;
     justify-content:center;
-    gap:8px;
+    flex-wrap:wrap;
+    gap:12px;
 }
 
 .nav-links a{
     text-decoration:none;
     color:white;
 
-    font-size:clamp(12px, 2.5vw, 16px);
+    font-size:16px;
     font-weight:700;
 
-    padding:8px 12px;
+    padding:10px 16px;
     border-radius:30px;
 
-    white-space:nowrap;
-    transition:0.3s;
+    transition:0.3s ease;
 }
 
 .nav-links a:hover{
     background:gold;
     color:black;
+    transform:translateY(-2px);
 }
 
-/* ================= HERO FIX ================= */
+/* ================= HERO ================= */
 
 .banner{
     width:100%;
@@ -121,7 +129,7 @@ nav{
     margin-bottom:20px;
 }
 
-/* BUTTON FIX */
+/* BUTTON */
 
 .start-btn{
     display:inline-block;
@@ -144,7 +152,7 @@ nav{
     transform:scale(1.05);
 }
 
-/* ================= TEXT BOX FIX ================= */
+/* ================= TEXT BOX ================= */
 
 .container{
     width:100%;
@@ -175,7 +183,7 @@ nav{
     line-height:1.7;
 }
 
-/* ================= MOBILE FIX ================= */
+/* ================= MOBILE ================= */
 
 @media(max-width:768px){
 
@@ -200,7 +208,7 @@ nav{
     }
 
     .nav-links a{
-        font-size:12px;
+        font-size:13px;
         padding:7px 10px;
     }
 
@@ -216,7 +224,7 @@ nav{
 
 <nav>
 
-    <img src="GroundBreak.png" class="logo">
+    <img src="GroundBreak.png" class="logo" alt="Ground Break Logo">
 
     <div class="nav-links">
         <a href="index.html">Home</a>
@@ -231,7 +239,7 @@ nav{
 
     <div class="banner-content">
 
-        <img src="GroundBreak.png" class="banner-logo">
+        <img src="GroundBreak.png" class="banner-logo" alt="Ground Break">
 
         <p>Food • Fun • Relaxation</p>
 
