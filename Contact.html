@@ -7,6 +7,9 @@
 
 <title>Ground Break - Contact</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -17,6 +20,10 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     font-family:'Poppins', sans-serif;
     background:
@@ -24,165 +31,216 @@ body{
     url('holiday.jpg');
     background-size:cover;
     background-position:center;
+    background-repeat:no-repeat;
     background-attachment:fixed;
     color:white;
+    overflow-x:hidden;
     min-height:100vh;
 }
 
-/* NAVBAR */
+/* ================= NAVBAR ================= */
+
 nav{
     width:100%;
     background:rgba(30,30,30,0.92);
     backdrop-filter:blur(10px);
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
     padding:15px 6%;
     position:sticky;
     top:0;
     z-index:1000;
-    flex-wrap:wrap;
+    gap:15px;
 }
 
 .logo{
-    width:160px;
+    width:170px;
+    max-width:100%;
+    height:auto;
     transition:0.3s;
 }
 
 .logo:hover{
-    transform:scale(1.08);
+    transform:scale(1.05);
+    filter:drop-shadow(0px 6px 15px rgba(255,215,0,0.5));
 }
 
-/* LINKS */
 .nav-links{
     display:flex;
-    gap:12px;
-    flex-wrap:wrap;
+    align-items:center;
     justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
 }
 
 .nav-links a{
     text-decoration:none;
     color:white;
+    font-size:16px;
     font-weight:700;
-    padding:10px 14px;
+    padding:10px 16px;
     border-radius:30px;
-    transition:0.3s;
+    transition:0.3s ease;
 }
 
 .nav-links a:hover{
     background:gold;
     color:black;
-    transform:translateY(-3px);
+    transform:translateY(-2px);
 }
 
-/* TITLE */
+/* ================= TITLE ================= */
+
 h1{
     text-align:center;
-    font-size:clamp(28px,5vw,55px);
-    margin:40px 0 20px;
+    font-size:clamp(30px, 6vw, 60px);
+    margin:45px 15px 25px;
     font-weight:800;
 }
 
-/* CONTAINER */
+/* ================= CONTAINER ================= */
+
 .container{
     width:100%;
+    max-width:1100px;
+    margin:auto;
+    padding:0 5% 60px;
+
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
-    gap:20px;
-    padding:20px 5% 60px;
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    gap:25px;
 }
 
-/* CARD */
+/* ================= CARD ================= */
+
 .card{
-    background:rgba(255,255,255,0.95);
+    background:rgba(255,255,255,0.96);
     color:#222;
-    padding:22px;
-    border-radius:18px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+
+    padding:clamp(20px, 4vw, 50px);
+
+    border-radius:25px;
+
+    box-shadow:0px 12px 35px rgba(0,0,0,0.3);
+
     transition:0.3s;
 }
 
 .card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 18px 45px rgba(0,0,0,0.4);
+    transform:translateY(-4px);
 }
 
 .card h2{
     text-align:center;
-    margin-bottom:15px;
-    font-size:22px;
+
+    margin-bottom:18px;
+
+    font-size:clamp(20px, 3vw, 28px);
+
     font-weight:800;
 }
 
-/* TEXT */
 .card p{
-    font-size:15px;
-    margin:8px 0;
-    line-height:1.6;
+    font-size:clamp(15px, 2.3vw, 20px);
+
+    line-height:1.9;
+
+    margin-bottom:18px;
+
+    font-weight:600;
+
+    word-wrap:break-word;
 }
 
-/* FORM */
-input, textarea{
+/* ================= FORM ================= */
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+input,
+textarea{
     width:100%;
-    padding:12px;
+    padding:14px;
+
     border:none;
-    border-radius:10px;
+    border-radius:12px;
+
     background:#f2f2f2;
+
     font-size:14px;
+    font-family:'Poppins', sans-serif;
+
     outline:none;
+
     transition:0.3s;
 }
 
-input:focus, textarea:focus{
+input:focus,
+textarea:focus{
     box-shadow:0 0 0 2px gold;
 }
 
 textarea{
-    height:110px;
+    min-height:120px;
     resize:none;
 }
 
 button{
     width:100%;
-    padding:12px;
+
+    padding:14px;
+
     border:none;
-    border-radius:10px;
+    border-radius:12px;
+
     background:black;
     color:white;
+
     font-size:15px;
     font-weight:700;
+
     cursor:pointer;
+
     transition:0.3s;
 }
 
 button:hover{
     background:gold;
     color:black;
-    transform:scale(1.03);
+    transform:scale(1.02);
 }
 
-/* FACEBOOK BUTTON */
+/* ================= FACEBOOK BUTTON ================= */
+
 .fb-link{
-    display:flex;
+    display:inline-flex;
     align-items:center;
     gap:10px;
-    margin-top:12px;
-    padding:10px 14px;
+
+    margin-top:14px;
+
+    padding:12px 16px;
+
     background:#1877f2;
     color:white;
+
     font-weight:800;
-    border-radius:10px;
+
+    border-radius:12px;
+
     text-decoration:none;
+
     transition:0.3s;
-    width:fit-content;
 }
 
 .fb-link:hover{
     background:black;
     color:gold;
-    transform:translateY(-4px) scale(1.05);
-    box-shadow:0 10px 20px rgba(0,0,0,0.3);
+    transform:translateY(-3px);
 }
 
 .fb-icon{
@@ -191,25 +249,24 @@ button:hover{
     filter:invert(1);
 }
 
-/* FEEDBACK */
-.feedback-item{
-    background:#f5f5f5;
-    padding:12px;
-    border-radius:12px;
-    margin-bottom:10px;
-    font-size:13px;
-}
+/* ================= LOCATION BUTTON ================= */
 
-/* LOCATION BUTTON */
 .location-link{
     display:inline-block;
-    margin-top:10px;
-    padding:10px 14px;
+
+    margin-top:12px;
+
+    padding:12px 16px;
+
     background:gold;
     color:black;
+
     font-weight:800;
-    border-radius:10px;
+
+    border-radius:12px;
+
     text-decoration:none;
+
     transition:0.3s;
 }
 
@@ -219,19 +276,96 @@ button:hover{
     transform:translateY(-3px);
 }
 
-/* MOBILE */
-@media(max-width:480px){
+/* ================= FEEDBACK ================= */
+
+.feedback-item{
+    background:#f5f5f5;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    margin-bottom:12px;
+
+    font-size:14px;
+
+    line-height:1.7;
+
+    word-wrap:break-word;
+}
+
+/* ================= TABLETS ================= */
+
+@media (max-width:768px){
+
+    nav{
+        flex-direction:column;
+        text-align:center;
+        padding:15px;
+    }
+
+    .logo{
+        width:140px;
+    }
+
+    .nav-links{
+        width:100%;
+        gap:10px;
+    }
+
+    .nav-links a{
+        font-size:15px;
+        padding:8px 14px;
+    }
+
+    .container{
+        padding:0 20px 50px;
+    }
+
+    .card{
+        border-radius:20px;
+    }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:480px){
+
+    body{
+        background-attachment:scroll;
+    }
+
+    h1{
+        margin-top:35px;
+    }
+
     .logo{
         width:120px;
     }
 
+    .nav-links{
+        gap:8px;
+    }
+
     .nav-links a{
         font-size:13px;
-        padding:8px 10px;
+        padding:7px 10px;
+    }
+
+    .container{
+        padding:0 15px 40px;
     }
 
     .card{
-        padding:18px;
+        padding:20px;
+        border-radius:18px;
+    }
+
+    .fb-link,
+    .location-link{
+        width:100%;
+        justify-content:center;
+        text-align:center;
     }
 }
 
@@ -241,7 +375,8 @@ button:hover{
 <body>
 
 <nav>
-    <img src="GroundBreak.png" class="logo">
+
+    <img src="GroundBreak.png" class="logo" alt="Ground Break Logo">
 
     <div class="nav-links">
         <a href="index.html">Home</a>
@@ -249,16 +384,21 @@ button:hover{
         <a href="Services.html">Services</a>
         <a href="Contact.html">Contact</a>
     </div>
+
 </nav>
 
 <h1>Contact Us</h1>
 
 <div class="container">
 
+    <!-- CONTACT INFO -->
+
     <div class="card">
+
         <h2>Contact Info</h2>
 
         <p>📞 +09 282 567 994</p>
+
         <p>📧 groundbreak@email.com</p>
 
         <p>📍 Location:</p>
@@ -266,10 +406,12 @@ button:hover{
         <a class="location-link"
            href="https://www.google.com/maps?q=7+M.+Santos+Street,+San+Jose,+Antipolo,+Rizal+1870"
            target="_blank">
+
             Open in Google Maps
+
         </a>
 
-        <p style="margin-top:10px;font-size:12px;color:#666;">
+        <p style="margin-top:12px;font-size:12px;color:#666;">
             If offline, manually search the address in Maps later.
         </p>
 
@@ -282,24 +424,41 @@ button:hover{
                  alt="Facebook">
 
             Ground Break Facebook Page
+
         </a>
+
     </div>
 
+    <!-- SEND FEEDBACK -->
+
     <div class="card">
+
         <h2>Send Feedback</h2>
 
         <form id="feedbackForm">
-            <input id="name" placeholder="Name" required>
-            <input id="email" placeholder="Email" required>
-            <input id="phone" placeholder="Contact Number" required>
+
+            <input id="name" type="text" placeholder="Name" required>
+
+            <input id="email" type="email" placeholder="Email" required>
+
+            <input id="phone" type="tel" placeholder="Contact Number" required>
+
             <textarea id="message" placeholder="Message" required></textarea>
+
             <button type="submit">Send</button>
+
         </form>
+
     </div>
 
+    <!-- CUSTOMER FEEDBACK -->
+
     <div class="card">
+
         <h2>Customer Feedback</h2>
+
         <div id="customerFeedback"></div>
+
     </div>
 
 </div>
@@ -307,31 +466,37 @@ button:hover{
 <script>
 
 document.getElementById("feedbackForm").addEventListener("submit", function(e){
+
     e.preventDefault();
 
     let data = JSON.parse(localStorage.getItem("feedbacks")) || [];
 
     data.push({
-        name:name.value,
-        email:email.value,
-        phone:phone.value,
-        message:message.value,
-        time:new Date().toLocaleString()
+        name: name.value,
+        email: email.value,
+        phone: phone.value,
+        message: message.value,
+        time: new Date().toLocaleString()
     });
 
     localStorage.setItem("feedbacks", JSON.stringify(data));
 
     this.reset();
+
     loadFeedback();
+
 });
 
 function loadFeedback(){
+
     let data = JSON.parse(localStorage.getItem("feedbacks")) || [];
+
     let box = document.getElementById("customerFeedback");
 
     box.innerHTML = "";
 
-    data.slice().reverse().forEach(f=>{
+    data.slice().reverse().forEach(f => {
+
         box.innerHTML += `
             <div class="feedback-item">
                 <b>${f.name}</b><br>
@@ -339,7 +504,9 @@ function loadFeedback(){
                 <small>${f.time}</small>
             </div>
         `;
+
     });
+
 }
 
 loadFeedback();
