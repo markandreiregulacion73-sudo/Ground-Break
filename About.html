@@ -7,6 +7,9 @@
 
 <title>Ground Break - About</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -17,6 +20,10 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     font-family:'Poppins', sans-serif;
     background:
@@ -24,12 +31,14 @@ body{
     url('holiday.jpg');
     background-size:cover;
     background-position:center;
+    background-repeat:no-repeat;
     background-attachment:fixed;
     color:white;
     overflow-x:hidden;
+    min-height:100vh;
 }
 
-/* NAVBAR */
+/* ================= NAVBAR ================= */
 
 nav{
     width:100%;
@@ -39,55 +48,58 @@ nav{
     align-items:center;
     justify-content:space-between;
     padding:15px 6%;
-    flex-wrap:wrap;
     position:sticky;
     top:0;
     z-index:1000;
+    gap:15px;
 }
 
 .logo{
     width:170px;
     max-width:100%;
+    height:auto;
     transition:0.3s;
 }
 
 .logo:hover{
-    transform:scale(1.08);
+    transform:scale(1.05);
     filter:drop-shadow(0px 6px 15px rgba(255,215,0,0.5));
 }
 
 .nav-links{
     display:flex;
-    gap:15px;
+    align-items:center;
+    justify-content:center;
     flex-wrap:wrap;
+    gap:12px;
 }
 
 .nav-links a{
     text-decoration:none;
     color:white;
-    font-size:17px;
+    font-size:16px;
     font-weight:700;
     padding:10px 16px;
     border-radius:30px;
-    transition:0.3s;
+    transition:0.3s ease;
 }
 
 .nav-links a:hover{
     background:gold;
     color:black;
-    transform:translateY(-3px);
+    transform:translateY(-2px);
 }
 
-/* TITLE */
+/* ================= TITLE ================= */
 
 h1{
     text-align:center;
-    font-size:clamp(28px, 5vw, 60px);
-    margin:50px 0 25px;
+    font-size:clamp(30px, 6vw, 60px);
+    margin:45px 15px 25px;
     font-weight:800;
 }
 
-/* CONTAINER */
+/* ================= CONTAINER ================= */
 
 .about-container{
     width:100%;
@@ -96,20 +108,23 @@ h1{
     padding:0 5% 60px;
 }
 
-/* IMAGE */
+/* ================= IMAGE ================= */
 
 .about-container img{
     width:100%;
+    height:auto;
+    display:block;
     border-radius:25px;
     box-shadow:0px 15px 40px rgba(0,0,0,0.5);
     transition:0.3s;
+    object-fit:cover;
 }
 
 .about-container img:hover{
-    transform:scale(1.02);
+    transform:scale(1.01);
 }
 
-/* TEXT BOX */
+/* ================= TEXT BOX ================= */
 
 .about-text{
     background:rgba(255,255,255,0.96);
@@ -122,21 +137,22 @@ h1{
 }
 
 .about-text:hover{
-    transform:translateY(-5px);
+    transform:translateY(-4px);
 }
 
 .about-text p{
-    font-size:clamp(15px, 2.2vw, 20px);
+    font-size:clamp(15px, 2.3vw, 20px);
     line-height:1.9;
     margin-bottom:18px;
     font-weight:600;
+    word-wrap:break-word;
 }
 
 .about-text b{
     color:#c58b00;
 }
 
-/* LOCATION */
+/* ================= LOCATION ================= */
 
 .location{
     margin-top:25px;
@@ -149,20 +165,21 @@ h1{
     font-weight:700;
     line-height:1.7;
     transition:0.3s;
+    word-break:break-word;
 }
 
 .location:hover{
-    transform:translateY(-5px);
+    transform:translateY(-4px);
 }
 
-/* RESPONSIVE NAV */
+/* ================= TABLETS ================= */
 
-@media(max-width:768px){
+@media (max-width:768px){
 
     nav{
         flex-direction:column;
         text-align:center;
-        gap:12px;
+        padding:15px;
     }
 
     .logo{
@@ -170,16 +187,35 @@ h1{
     }
 
     .nav-links{
-        justify-content:center;
+        width:100%;
+        gap:10px;
     }
 
     .nav-links a{
         font-size:15px;
-        padding:8px 12px;
+        padding:8px 14px;
+    }
+
+    .about-container{
+        padding:0 20px 50px;
+    }
+
+    .about-text{
+        border-radius:20px;
     }
 }
 
-@media(max-width:480px){
+/* ================= MOBILE ================= */
+
+@media (max-width:480px){
+
+    body{
+        background-attachment:scroll;
+    }
+
+    h1{
+        margin-top:35px;
+    }
 
     .logo{
         width:120px;
@@ -193,6 +229,24 @@ h1{
         font-size:13px;
         padding:7px 10px;
     }
+
+    .about-container{
+        padding:0 15px 40px;
+    }
+
+    .about-container img{
+        border-radius:18px;
+    }
+
+    .about-text{
+        padding:20px;
+        border-radius:18px;
+    }
+
+    .location{
+        padding:18px;
+        border-radius:18px;
+    }
 }
 
 </style>
@@ -202,7 +256,7 @@ h1{
 
 <nav>
 
-    <img src="GroundBreak.png" class="logo">
+    <img src="GroundBreak.png" class="logo" alt="Ground Break Logo">
 
     <div class="nav-links">
         <a href="index.html">Home</a>
@@ -217,7 +271,7 @@ h1{
 
 <div class="about-container">
 
-    <img src="groundbr.jpg">
+    <img src="groundbr.jpg" alt="Ground Break Billiards Cafe">
 
     <div class="about-text">
 
