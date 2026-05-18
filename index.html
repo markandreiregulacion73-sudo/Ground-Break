@@ -30,65 +30,67 @@ body{
 
     background-size:cover;
     background-position:center;
+    background-repeat:no-repeat;
     background-attachment:fixed;
 
     color:white;
     overflow-x:hidden;
 }
 
-/* ================= NAVBAR ================= */
+/* ================= NAVBAR (same system as about) ================= */
 
 nav{
     width:100%;
-    max-width:1100px;
-    margin:auto;
+    background:rgba(30,30,30,0.92);
+    backdrop-filter:blur(10px);
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    padding:15px 5%;
-
-    background:rgba(20,20,20,0.85);
-    backdrop-filter:blur(12px);
+    padding:15px 6%;
 
     position:sticky;
     top:0;
     z-index:1000;
 
-    flex-wrap:wrap;
-    gap:10px;
+    gap:15px;
 }
 
 .logo{
-    width:clamp(110px, 15vw, 160px);
-    height:auto;
+    width:170px;
+    max-width:100%;
+    transition:0.3s;
+}
+
+.logo:hover{
+    transform:scale(1.05);
 }
 
 .nav-links{
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
-    gap:8px;
+    gap:12px;
 }
 
 .nav-links a{
     text-decoration:none;
     color:white;
 
-    font-size:clamp(12px, 2.5vw, 16px);
+    font-size:clamp(13px, 2.5vw, 16px);
     font-weight:700;
 
-    padding:8px 12px;
+    padding:10px 16px;
     border-radius:30px;
 
     transition:0.3s;
-    white-space:nowrap;
 }
 
 .nav-links a:hover{
     background:gold;
     color:black;
+    transform:translateY(-2px);
 }
 
 /* ================= HERO ================= */
@@ -108,27 +110,26 @@ nav{
 
 .banner-content{
     width:100%;
-    max-width:900px;
+    max-width:1100px; /* SAME AS ABOUT CONTAINER */
 }
 
 .banner-logo{
-    width:clamp(160px, 45vw, 380px);
-    height:auto;
+    width:clamp(180px, 45vw, 380px);
     margin-bottom:20px;
 }
 
 .banner-content p{
-    font-size:clamp(14px, 3.5vw, 22px);
+    font-size:clamp(16px, 3vw, 24px);
     font-weight:600;
-    margin-bottom:20px;
+    margin-bottom:25px;
 }
 
 /* BUTTON */
+
 .start-btn{
     display:inline-block;
 
     padding:12px 26px;
-
     background:gold;
     color:black;
 
@@ -136,7 +137,6 @@ nav{
     font-weight:800;
 
     border-radius:50px;
-
     text-decoration:none;
 
     transition:0.3s;
@@ -147,10 +147,13 @@ nav{
     transform:scale(1.05);
 }
 
-/* ================= TEXT BOX ================= */
+/* ================= TEXT BOX (same as about system) ================= */
 
 .container{
     width:100%;
+    max-width:1100px;
+    margin:auto;
+
     display:flex;
     justify-content:center;
 
@@ -159,13 +162,11 @@ nav{
 
 .text-box{
     width:100%;
-    max-width:900px;
-
     background:rgba(255,255,255,0.95);
 
-    padding:clamp(18px, 4vw, 35px);
+    padding:clamp(20px, 4vw, 45px);
 
-    border-radius:20px;
+    border-radius:25px;
 
     color:#222;
 
@@ -173,18 +174,27 @@ nav{
 }
 
 .text-box p{
-    font-size:clamp(14px, 3.5vw, 20px);
+    font-size:clamp(15px, 2.3vw, 20px);
     font-weight:600;
-    line-height:1.7;
+    line-height:1.8;
 }
 
-/* ================= MOBILE FIXES ================= */
+/* ================= RESPONSIVE (same breakpoints as about) ================= */
 
-@media(max-width:768px){
+@media (max-width:768px){
 
     nav{
         flex-direction:column;
         text-align:center;
+    }
+
+    .logo{
+        width:140px;
+    }
+
+    .nav-links{
+        width:100%;
+        gap:10px;
     }
 
     .banner{
@@ -192,7 +202,7 @@ nav{
     }
 }
 
-@media(max-width:480px){
+@media (max-width:480px){
 
     body{
         background-attachment:scroll;
@@ -203,7 +213,7 @@ nav{
     }
 
     .nav-links a{
-        font-size:12px;
+        font-size:13px;
         padding:7px 10px;
     }
 
